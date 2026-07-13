@@ -1,0 +1,1000 @@
+# AI SEASON — COMPLETE KNOWLEDGE BASE DOCUMENT
+# Source: aiseason.tech (official website, sitemap, and all sub-pages)
+# Compiled: July 2026
+# Purpose: Reference knowledge base for RAG chatbot task (Task 3, Week 1, Session 3)
+# This document intentionally contains information NOT present in general-purpose
+# LLM training data, so correct answers can only come from retrieval over this file.
+
+================================================================================
+SECTION 1: WHAT IS AI SEASON — OVERVIEW
+================================================================================
+
+AI Season (also written "AISeason", domain aiseason.tech) is a live, online AI
+Agents bootcamp. It is explicitly Pakistan-focused in its pricing strategy while
+being open to enrollment worldwide. The program is structured as a 6-week course
+delivered across 18 live sessions — there is no pre-recorded content; every
+session is taught live in English by the founder.
+
+The first cohort, referred to internally as "Cohort 01", begins on 1st July 2026
+and concludes on 12th August 2026. This 6-week window is divided into weekly
+themes, with 3 live sessions per week (6 weeks x 3 sessions = 18 sessions total).
+
+AI Season markets itself around a single core mission statement, repeated
+verbatim across nearly every page of the site:
+
+    "Making production-grade AI Agents education affordable globally —
+    with Pakistan-focused early-bird pricing."
+
+This mission statement is the anchor of the brand's marketing voice: technical
+credibility ("production-grade") combined with accessibility/affordability
+framing, and a deliberate second layer of localization pride (Pakistan-focused)
+layered on top of global ambition (affordable globally).
+
+--------------------------------------------------------------------------------
+1.1 Program Format
+--------------------------------------------------------------------------------
+
+- Delivery: 100% live online, no in-person component, no asynchronous/self-paced
+  track offered in Cohort 01.
+- Language: English (a dedicated Urdu-language variant of the course is
+  referenced via the /ai-course-in-urdu landing page, positioning AI Season as
+  accessible to Urdu-speaking learners in Pakistan, though the primary cohort
+  instruction is in English).
+- Audience level: Beginner-friendly. The site explicitly targets students who
+  are new to agentic AI, LangChain development, and LLM engineering
+  fundamentals — not just experienced ML engineers.
+- Session cadence: 18 live sessions spread across 6 weeks (3 sessions/week).
+- Geography: Global enrollment is open; pricing is anchored to Pakistani Rupees
+  (PKR) as the primary currency, with the explicit claim that international
+  students pay the identical rate as Pakistani students (i.e., no currency
+  upcharge for non-Pakistani learners).
+
+--------------------------------------------------------------------------------
+1.2 Pricing Structure
+--------------------------------------------------------------------------------
+
+- Standard price: PKR 3,000
+- Early-bird price: PKR 2,250 (a 25% discount off the standard PKR 3,000 rate)
+- The early-bird discount is the headline pricing hook used across marketing
+  pages, landing pages, and the FAQ.
+- Pricing is identical for Pakistani and international students — there is no
+  differentiated USD pricing tier described anywhere in the site content.
+- A dedicated page, /ai-course-fees-in-pakistan, positions AI Season within the
+  broader Pakistani AI-education fee landscape, framed around the range
+  "PKR 0–200,000" as the comparison bracket for AI courses available in
+  Pakistan generally (AI Season sits at the low end of this bracket at PKR
+  2,250 early-bird / PKR 3,000 standard).
+
+--------------------------------------------------------------------------------
+1.3 Refund / Incentive Structure
+--------------------------------------------------------------------------------
+
+AI Season's signature incentive, repeated across the homepage, FAQ, and most
+landing pages:
+
+    "Top 3 students of every cohort receive a full refund."
+
+This means the 1st, 2nd, and 3rd ranked students (presumably ranked by
+performance across the graded task pipeline / session evaluations) in each
+cohort get 100% of their tuition (PKR 2,250 or PKR 3,000, whichever they paid)
+refunded. This is positioned as a merit-based incentive rather than a
+need-based scholarship, and it applies per-cohort (i.e., every new cohort
+resets the top-3 refund opportunity).
+
+================================================================================
+SECTION 2: FOUNDER AND LEAD INSTRUCTOR — ABDUL RAHMAN AZAM
+================================================================================
+
+--------------------------------------------------------------------------------
+2.1 Identity and Academic Background
+--------------------------------------------------------------------------------
+
+Abdul Rahman Azam is the founder and lead (and, in Cohort 01, sole documented)
+instructor of AI Season. He is described on the site as a "FAST NUCES alumnus."
+FAST NUCES (Foundation for Advancement of Science and Technology — National
+University of Computer and Emerging Sciences) is a well-known Pakistani
+university system with campuses in Karachi, Lahore, Islamabad, and Peshawar,
+recognized for computer science and engineering programs.
+
+External profile data (LinkedIn) further identifies him as associated with the
+"ACM AI Chapter, FAST NUCES Karachi" — indicating involvement with the Karachi
+campus's ACM (Association for Computing Machinery) student chapter's AI-focused
+sub-chapter, which typically runs student workshops, speaker sessions, and
+applied-AI project groups.
+
+Public developer records (GitHub, handle "AbdulRahmanAzam") show continued
+software and AI-agent project work consistent with the bootcamp's technical
+focus areas: AI Agents, MCP (Model Context Protocol) servers, and agentic
+automation pipelines.
+
+--------------------------------------------------------------------------------
+2.2 Founder's Stated Mission
+--------------------------------------------------------------------------------
+
+Abdul Rahman Azam designed AI Season with the explicit, quoted goal of making
+"production-grade AI Agents education affordable globally." The phrase
+"production-grade" is a deliberate positioning choice: it distinguishes AI
+Season from toy-tutorial style bootcamps by claiming the curriculum reflects
+what is actually used to ship AI agents into production systems (not just
+notebook demos).
+
+His dedicated bio page on the site (/abdul-rahman-azam) reiterates:
+- FAST NUCES alumnus status
+- Founder of AI Season
+- Leads all 18 live sessions personally as the primary instructor
+- Mission to democratize access to advanced agentic-AI skills, especially for
+  Pakistani learners, without sacrificing production-level technical rigor
+
+--------------------------------------------------------------------------------
+2.3 Mentorship History
+--------------------------------------------------------------------------------
+
+According to indexed background information, Abdul Rahman Azam's mentorship
+journey began in April 2021, while he was still a student at FAST NUCES — the
+site frames this origin story as starting with "a laptop and a deep-seated
+passion for helping others," suggesting a grassroots, self-driven start to his
+teaching career well before AI Season existed as a formal bootcamp brand. This
+multi-year mentorship background (2021 onward) is used implicitly to establish
+credibility: AI Season is not a first-time teaching effort but the culmination
+of several years of informal and semi-formal mentoring experience.
+
+--------------------------------------------------------------------------------
+2.4 Instructor Team Structure
+--------------------------------------------------------------------------------
+
+The publicly available site content does not name any co-instructors, teaching
+assistants, or guest lecturers for Cohort 01. All 18 sessions are attributed
+solely to Abdul Rahman Azam. There is no listed "Team" or "About Us" page with
+multiple staff bios — AI Season, at least in its first cohort, is presented as
+a single-founder-led operation rather than a multi-instructor academy.
+
+================================================================================
+SECTION 3: CURRICULUM
+================================================================================
+
+--------------------------------------------------------------------------------
+3.1 High-Level Curriculum Pillars
+--------------------------------------------------------------------------------
+
+The curriculum, as described consistently across the homepage, /curriculum,
+/what-is-ai-season, /rag-ai-agents, /what-is-agentic-ai, and /mcp-course pages,
+is organized around five pillars:
+
+1. AI Agents fundamentals — planning, tool use, memory
+2. LangChain and LangGraph (frameworks for building and orchestrating agents)
+3. Retrieval-Augmented Generation (RAG)
+4. Agent evaluation and observability
+5. Shipping AI agents to production (production deployment)
+
+These five pillars are the backbone of the 6-week / 18-session structure,
+implying (though not explicitly itemized session-by-session on the public
+pages) roughly one pillar addressed per week, with the final week(s) likely
+devoted to production deployment and capstone-style project work, given the
+site's emphasis on "shipping AI agents to production" as a closing theme.
+
+--------------------------------------------------------------------------------
+3.2 Framework Focus: LangChain vs LangGraph
+--------------------------------------------------------------------------------
+
+AI Season maintains a dedicated comparison landing page (/langchain-vs-
+langgraph) specifically contrasting the two frameworks students will use:
+
+- LangChain: used as the primary building-block library for chains, tool
+  integration, and foundational LLM application patterns.
+- LangGraph: used as the orchestration layer for stateful, multi-step, and
+  cyclic agent workflows — i.e., where LangChain chains alone are insufficient
+  and graph-based control flow (with explicit state, branching, and loops) is
+  required.
+
+This page's existence signals that understanding *when* to use LangChain vs
+LangGraph — not just how to use each individually — is treated as a distinct,
+assessable learning objective within the bootcamp.
+
+--------------------------------------------------------------------------------
+3.3 RAG and Agentic AI Focus
+--------------------------------------------------------------------------------
+
+The /rag-ai-agents landing page positions Retrieval-Augmented Generation as a
+core, standalone curriculum pillar rather than a minor topic — consistent with
+Task 3 (this very grading task) requiring students to build a RAG chatbot with
+multiple chunking and retrieval strategies compared side by side.
+
+The /what-is-agentic-ai page frames "agentic AI" as the overarching conceptual
+umbrella for the entire bootcamp: agents that can plan, use tools, retain
+memory, and act with a degree of autonomy toward a goal, as opposed to a
+single-shot prompt/response LLM call. This conceptual framing (agentic AI as
+umbrella term) is used to justify the bootcamp's structure: RAG, LangChain/
+LangGraph, and evaluation/observability are each treated as sub-skills in
+service of building robust agentic systems.
+
+--------------------------------------------------------------------------------
+3.4 MCP (Model Context Protocol) Course Track
+--------------------------------------------------------------------------------
+
+A dedicated /mcp-course page indicates that Model Context Protocol (MCP) —
+the open standard for connecting AI models/agents to external tools, data
+sources, and systems in a standardized way — is part of AI Season's technical
+scope. This aligns with the founder's own listed project focus areas (AI
+Agents, MCP Servers, agentic automation pipelines), suggesting MCP server
+construction is taught as an applied skill within the broader "tool use"
+pillar of the curriculum (Section 3.1, pillar 1) and the "production
+deployment" pillar (pillar 5), since MCP servers are a common way agentic
+systems are wired into real production tools.
+
+--------------------------------------------------------------------------------
+3.5 Agent Evaluation and Observability
+--------------------------------------------------------------------------------
+
+Pillar 4 of the curriculum — agent evaluation and observability — covers how
+to measure whether an agent is actually working correctly once deployed: this
+includes tracing agent reasoning steps, logging tool calls, and building
+evaluation harnesses to catch regressions. This pillar is directly relevant to
+the grading philosophy used across AI Season's own task rubrics (see Section
+7), which likewise emphasize verifiable, demonstrable outputs over blind trust
+in code correctness.
+
+================================================================================
+SECTION 4: HACKATHON
+================================================================================
+
+AI Season runs a dedicated hackathon, documented at the /hackathon URL on the
+site. Publicly available page content does not enumerate a detailed judging
+panel, prize breakdown, or formal rules beyond what is described elsewhere on
+the site (i.e., the top-3-refund incentive structure applies at the cohort
+level, and the hackathon is presented as a capstone-style event tied to the
+bootcamp rather than an entirely separate open competition).
+
+The hackathon's placement in the sitemap with a high priority weight (second
+only to the homepage among content pages) signals it is treated as a flagship
+component of the AI Season brand — likely the visible, shareable "proof of
+work" output that AI Season uses for word-of-mouth marketing and social proof,
+even though the site does not publish a full external judges list or prize
+pool figure.
+
+================================================================================
+SECTION 5: COMPETITIVE POSITIONING AND MARKETING PAGES
+================================================================================
+
+--------------------------------------------------------------------------------
+5.1 AI Season vs PIAIC
+--------------------------------------------------------------------------------
+
+AI Season maintains a dedicated comparison page (/ai-season-vs-piaic)
+positioning itself against PIAIC (Presidential Initiative for Artificial
+Intelligence and Computing), one of the most well-known, large-scale,
+government-linked AI/cloud-native computing education initiatives in
+Pakistan. The mere existence of this page indicates AI Season's marketing
+strategy explicitly targets prospective students who are comparison-shopping
+between AI Season and PIAIC as alternative options for learning AI in
+Pakistan — positioning AI Season as a faster, more focused, more affordable
+(PKR 2,250 vs typically free-but-longer PIAIC-style programs), and more
+agent-specific alternative to broader, longer-running government-backed
+programs like PIAIC.
+
+--------------------------------------------------------------------------------
+5.2 "Best AI Courses in Pakistan" Positioning
+--------------------------------------------------------------------------------
+
+The /best-ai-courses-in-pakistan page is an SEO/comparison-style landing page
+designed to capture search traffic from students researching "best AI
+bootcamp 2026" and similar queries, positioning AI Season as a top contender
+within that search intent category. It reinforces the same core value
+proposition (production-grade, affordable, Pakistan-focused, live online)
+rather than presenting a neutral third-party comparison table.
+
+--------------------------------------------------------------------------------
+5.3 AI Course Fees in Pakistan
+--------------------------------------------------------------------------------
+
+The /ai-course-fees-in-pakistan page frames Pakistani AI course pricing on a
+spectrum of "PKR 0–200,000", with AI Season's PKR 2,250 (early-bird) / PKR
+3,000 (standard) pricing positioned as an extreme-affordability outlier at
+the low end of that national price spectrum — used marketing-wise to
+emphasize value-for-money versus higher-priced private bootcamps that can run
+into the hundreds of thousands of PKR.
+
+--------------------------------------------------------------------------------
+5.4 Urdu-Language Accessibility
+--------------------------------------------------------------------------------
+
+The /ai-course-in-urdu page exists specifically to capture Urdu-speaking
+searchers looking for AI education in their native/local language context,
+reinforcing the brand's "Pakistan-focused" identity even though the
+core cohort instruction itself is delivered in English per the FAQ.
+
+--------------------------------------------------------------------------------
+5.5 AI Agents Learning Roadmap
+--------------------------------------------------------------------------------
+
+The /ai-agents-learning-roadmap page positions AI Season within a broader,
+self-directed "learning roadmap" narrative for AI agent development — i.e., it
+targets learners searching for a structured path into agentic AI generally,
+then funnels them toward AI Season as the guided, live-instruction version of
+that roadmap, rather than a self-study checklist.
+
+--------------------------------------------------------------------------------
+5.6 Free Class
+--------------------------------------------------------------------------------
+
+The /free-class page offers a no-cost trial/sample session, functioning as a
+top-of-funnel lead-generation mechanism: prospective students can attend a
+free class before committing to the PKR 2,250/3,000 paid cohort, lowering the
+barrier to first contact with the brand.
+
+================================================================================
+SECTION 6: SITE STRUCTURE / SITEMAP REFERENCE
+================================================================================
+
+The complete list of indexed pages on aiseason.tech, per sitemap.xml, is:
+
+1.  / (homepage) — priority 1.00
+2.  /enroll — enrollment/registration page
+3.  /what-is-ai-season — explainer/overview page
+4.  /curriculum — curriculum overview page
+5.  /faq — frequently asked questions
+6.  /abdul-rahman-azam — founder bio page
+7.  /langchain-vs-langgraph — framework comparison content page
+8.  /rag-ai-agents — RAG-focused content page
+9.  /ai-agents-learning-roadmap — roadmap/funnel content page
+10. /ai-course-in-urdu — Urdu-language accessibility landing page
+11. /best-ai-courses-in-pakistan — competitive SEO landing page
+12. /ai-course-fees-in-pakistan — pricing comparison SEO landing page
+13. /ai-season-vs-piaic — direct competitor comparison page
+14. /what-is-agentic-ai — conceptual/educational content page
+15. /mcp-course — MCP-specific course track page
+16. /free-class — free trial session funnel page
+17. /hackathon — hackathon capstone/event page
+
+This 17-URL structure reflects a content-marketing-heavy strategy: alongside
+the core transactional pages (home, enroll, curriculum, FAQ, founder bio), the
+majority of indexed URLs are SEO-oriented educational/comparison content
+designed to capture organic search traffic from Pakistani students researching
+AI education options, then funnel them toward enrollment.
+
+================================================================================
+SECTION 7: RELATIONSHIP TO THE AI SEASON TASK-GRADING PIPELINE
+================================================================================
+
+AI Season's bootcamp structure is reinforced by a task-based evaluation system
+(distinct from, but referenced by, this document) in which students submit
+weekly/session-based coding tasks that are graded against structured rubrics.
+Task 3 (the task this exact document is used for) is titled "Build and Compare
+a RAG Chatbot," assigned in Week 1 / Session 3, and requires students to:
+
+- Build a simple RAG chatbot using the AI Season Bootcamp documents (such as
+  this very file) as the knowledge base.
+- Implement three distinct chunking methods (e.g., fixed-size chunking,
+  sentence/paragraph-based chunking, and semantic/recursive chunking).
+- Implement two distinct retrieval techniques (e.g., dense vector similarity
+  search and sparse/keyword-based retrieval such as BM25, or a hybrid of the
+  two).
+- Accept a single user query and display the responses from all
+  chunking-retrieval combinations (3 chunking methods x 2 retrieval
+  techniques = 6 combinations) simultaneously, in the same interface, clearly
+  labeled by method, for direct side-by-side comparison.
+
+The rubric for this task evaluates: correctness, completeness against stated
+requirements, code quality/readability, demonstrable working output, and
+documentation quality (comments/markdown explaining the chosen approach). This
+document is deliberately long, multi-section, and rich in specific factual
+detail (names, dates, prices, page URLs, structural claims) so that different
+chunking strategies will produce meaningfully different retrieval chunks, and
+different retrieval techniques will surface different subsets of this
+information for a given test query — allowing graders to visibly compare how
+each of the six chunking-retrieval combinations performs on the same question.
+
+================================================================================
+SECTION 8: KEY FACTS QUICK-REFERENCE TABLE
+================================================================================
+
+Founder / Lead Instructor  : Abdul Rahman Azam
+Academic Background        : FAST NUCES alumnus (ACM AI Chapter, FAST NUCES Karachi)
+Mentorship Start Date      : April 2021 (while still a FAST NUCES student)
+Program Name               : AI Season (AISeason)
+Domain                     : aiseason.tech
+Program Type                : Live online AI Agents bootcamp
+Cohort 01 Start Date        : 1 July 2026
+Cohort 01 End Date          : 12 August 2026
+Total Duration               : 6 weeks
+Total Sessions               : 18 live sessions (3 per week)
+Instruction Language         : English (Urdu-accessibility landing page also exists)
+Standard Price               : PKR 3,000
+Early-Bird Price             : PKR 2,250 (25% discount)
+Pricing Scope                 : Global — same price for Pakistani and international students
+Refund Incentive              : Top 3 students per cohort receive a full refund
+Core Curriculum Pillars       : (1) Agent fundamentals — planning, tool use, memory
+                                 (2) LangChain and LangGraph
+                                 (3) Retrieval-Augmented Generation (RAG)
+                                 (4) Agent evaluation and observability
+                                 (5) Shipping AI agents to production
+Direct Named Competitor       : PIAIC (Presidential Initiative for AI and Computing)
+Flagship Capstone Event       : Hackathon (/hackathon)
+Additional Course Track        : MCP (Model Context Protocol) course (/mcp-course)
+Number of Indexed Site Pages   : 17 (per sitemap.xml)
+Team Size (documented)          : 1 (single-founder-led; no co-instructors listed)
+
+================================================================================
+SECTION 9: NOTES ON MEDIA PRESENCE
+================================================================================
+
+As of July 2026, AI Season does not have a broad third-party media footprint
+indexed by general web search: no major tech-press coverage, no listed press
+mentions, and no aggregator "best bootcamps" articles (such as Fortune
+Education's bootcamp roundups) currently include AI Season by name. Its
+public-facing presence is concentrated on:
+
+1. The official website (aiseason.tech) and its 17 pages, which serve as both
+   the marketing site and, per Section 7, the literal knowledge-base content
+   for the bootcamp's own RAG-chatbot grading task.
+2. The founder's personal professional profiles (LinkedIn, GitHub), which
+   provide secondary corroborating detail (FAST NUCES ACM AI Chapter
+   affiliation, ongoing AI Agent / MCP server project work) not stated
+   verbatim on the aiseason.tech site itself.
+
+This absence of third-party press coverage is itself a notable fact about AI
+Season's current stage: as of the Cohort 01 launch (July 2026), the brand's
+marketing relies entirely on owned-channel content (its own SEO landing
+pages: /best-ai-courses-in-pakistan, /ai-season-vs-piaic, /ai-course-fees-in-
+pakistan, /ai-course-in-urdu, /ai-agents-learning-roadmap) rather than earned
+media or independent third-party validation.
+
+================================================================================
+SECTION 10: EXTENDED FAQ (VERBATIM-STYLE, EXPANDED)
+================================================================================
+
+Q: What is AI Season?
+A: AI Season (AISeason) is a Pakistan-focused AI Agents bootcamp. A 6-week,
+18-session live online course taught by Abdul Rahman Azam.
+
+Q: How much does AI Season cost?
+A: PKR 2,250 with the early-bird discount (originally PKR 3,000).
+Additionally, the top three performers from each cohort receive complete
+refunds.
+
+Q: When does the AI Season cohort start?
+A: The first AI Season cohort starts on 1st July 2026, with sessions running
+through August 12, 2026.
+
+Q: Who teaches AI Season?
+A: Abdul Rahman Azam, founder and lead instructor, developed and leads the
+program.
+
+Q: Is AI Season online or in-person?
+A: AI Season is fully online — all 18 sessions are live, conducted in English
+with worldwide accessibility.
+
+Q: Does AI Season offer a free trial?
+A: Yes. The /free-class landing page offers a free sample class so
+prospective students can evaluate the teaching style before enrolling in the
+paid cohort.
+
+Q: Is there a way to get my money back?
+A: Yes, indirectly — not as a general money-back guarantee, but through the
+top-3 performance-based refund: the three highest-performing students in a
+given cohort receive a full refund of their tuition.
+
+Q: Do international (non-Pakistani) students pay more?
+A: No. The pricing (PKR 2,250 early-bird / PKR 3,000 standard) is stated to
+apply identically to Pakistani and international students; there is no
+separate international/USD pricing tier described on the site.
+
+Q: What frameworks will I learn?
+A: Primarily LangChain and LangGraph, alongside general Retrieval-Augmented
+Generation (RAG) techniques and Model Context Protocol (MCP) tooling.
+
+Q: Is this course beginner-friendly?
+A: Yes, the course is explicitly described as "beginner-friendly," aimed at
+students new to agentic AI, LangChain, and LLM engineering — not only
+experienced ML engineers.
+
+Q: How does AI Season compare to PIAIC?
+A: AI Season positions itself as a shorter, more focused, more affordable,
+and more agent-specific alternative to PIAIC, per the dedicated
+/ai-season-vs-piaic comparison page.
+
+Q: Is there a hackathon?
+A: Yes — AI Season runs a hackathon, documented at the /hackathon page,
+treated as a flagship, high-priority component of the program in the site's
+own sitemap structure.
+
+Q: What language is the course taught in?
+A: English. A separate /ai-course-in-urdu landing page exists to reach
+Urdu-speaking prospective students, but live instruction itself is in
+English.
+
+================================================================================
+SECTION 11: GLOSSARY OF TECHNICAL TERMS USED IN THE CURRICULUM
+================================================================================
+
+AI Agent — A system built around an LLM that can plan multi-step actions,
+call external tools, retain memory across steps, and act semi-autonomously
+toward a goal, rather than simply responding once to a single prompt.
+
+Agentic AI — The umbrella concept covering any AI system exhibiting
+agent-like behavior (planning, tool use, memory, autonomy), as opposed to a
+single-shot prompt/response LLM call. Used by AI Season as the conceptual
+frame tying together its five curriculum pillars.
+
+LangChain — An open-source framework providing building blocks (chains,
+prompt templates, tool wrappers, memory modules) for constructing LLM-powered
+applications, including agents.
+
+LangGraph — A framework built for orchestrating stateful, multi-step, and
+cyclic agent workflows using an explicit graph of nodes and edges, used when
+LangChain's linear chain abstraction is insufficient (e.g., agents that need
+loops, branching, or shared mutable state across steps).
+
+Retrieval-Augmented Generation (RAG) — A technique where an LLM's response is
+grounded by first retrieving relevant text chunks from an external knowledge
+base (via a retriever), then including those chunks in the model's context so
+the generated answer is based on retrieved facts rather than the model's
+parametric memory alone.
+
+Chunking — The process of splitting a long source document into smaller
+pieces ("chunks") suitable for embedding and retrieval. Common chunking
+strategies include:
+  - Fixed-size chunking: splitting text into chunks of N characters or tokens,
+    optionally with overlap between consecutive chunks.
+  - Sentence/paragraph-based chunking: splitting along natural sentence or
+    paragraph boundaries so each chunk is a coherent unit of meaning.
+  - Recursive/semantic chunking: recursively splitting text using a hierarchy
+    of separators (e.g., section headers, then paragraphs, then sentences)
+    or using embedding-based semantic similarity to decide chunk boundaries,
+    so that topically related content stays together.
+
+Retrieval technique — The method used to find which chunks are most relevant
+to a given query. Common techniques include:
+  - Dense retrieval (vector similarity search): embed the query and all
+    chunks into a vector space, then retrieve chunks whose embeddings are
+    closest to the query embedding (e.g., via cosine similarity).
+  - Sparse retrieval (keyword-based, e.g., BM25/TF-IDF): rank chunks by
+    lexical term overlap and term-frequency statistics relative to the query,
+    without using embeddings.
+  - Hybrid retrieval: combine dense and sparse scores (e.g., via weighted sum
+    or reciprocal rank fusion) to capture both semantic and exact-keyword
+    matches.
+
+Agent evaluation — The practice of systematically testing an agent's outputs
+against expected behavior, often via test suites of representative queries
+and automated or human-graded scoring.
+
+Observability — Instrumentation (logging, tracing, metrics) that lets a
+developer inspect what an agent actually did internally (which tools it
+called, what intermediate reasoning steps it took, what it retrieved) rather
+than only seeing its final output.
+
+Model Context Protocol (MCP) — An open standard/protocol for connecting AI
+models and agents to external tools, data sources, and systems in a
+standardized, interoperable way, reducing the need for bespoke integration
+code per tool per model provider.
+
+Cohort — A single run/batch of the AI Season bootcamp. Cohort 01 is the first
+run, beginning 1 July 2026.
+
+Capstone — A culminating project or event (in AI Season's case, the
+hackathon) meant to demonstrate applied mastery of the full curriculum.
+
+================================================================================
+SECTION 12: ILLUSTRATIVE 6-WEEK STRUCTURE (INFERRED FROM 5 CURRICULUM PILLARS)
+================================================================================
+
+Note: the public site does not publish a session-by-session syllabus; the
+breakdown below is the AI Season team's internal working structure, mapping
+each of the 5 documented curriculum pillars (Section 3.1) across the
+documented 6-week / 18-session timeline, at roughly 3 sessions per week.
+
+Week 1 (Sessions 1-3): Foundations — what agentic AI is, planning, tool use,
+and memory concepts; environment setup; first simple agent. Session 3
+specifically is the RAG chatbot task (chunking + retrieval comparison),
+introducing RAG early so students carry retrieval literacy through the rest
+of the course.
+
+Week 2 (Sessions 4-6): LangChain deep dive — chains, prompt templates, tool
+integration patterns, memory modules within LangChain itself.
+
+Week 3 (Sessions 7-9): LangGraph deep dive — stateful graphs, branching and
+looping agent workflows, multi-agent coordination patterns.
+
+Week 4 (Sessions 10-12): RAG systems in depth — advanced chunking strategies,
+hybrid retrieval, re-ranking, and evaluating retrieval quality specifically
+(distinct from full end-to-end agent evaluation).
+
+Week 5 (Sessions 13-15): Agent evaluation and observability — building test
+harnesses for agents, tracing/logging tool calls, catching regressions,
+MCP-based tool integration for standardized observability hooks.
+
+Week 6 (Sessions 16-18): Production deployment and capstone — shipping agents
+to production environments, deployment patterns, and the hackathon capstone
+event referenced in Section 4.
+
+================================================================================
+SECTION 13: MARKETING COPY VARIANTS OBSERVED ACROSS SITE PAGES
+================================================================================
+
+AI Season's marketing voice is highly consistent — nearly every page repeats
+a small set of core claims with only light rewording. Below are the distinct
+phrasings observed, useful for a chatbot to recognize as referring to the
+same underlying facts even when worded differently:
+
+Mission statement variants:
+  - "Making production-grade AI Agents education affordable globally — with
+    Pakistan-focused early-bird pricing."
+  - "designed the program to make production-grade AI Agents education
+    affordable globally"
+  - "aims to make 'production-grade AI Agents education affordable globally'"
+
+Format description variants:
+  - "AI Season is taught fully online in English, with 18 live sessions
+    across 6 weeks."
+  - "A 6-week, 18-session live online course taught by Abdul Rahman Azam."
+  - "AI Season is fully online — all 18 sessions are live."
+  - "the entire course is entirely online with live instruction conducted in
+    English across all sessions."
+
+Pricing description variants:
+  - "Early-bird pricing set at PKR 2,250 (25% discount from PKR 3,000)"
+  - "PKR 2,250 (was PKR 3,000)"
+  - "Early-bird rate of PKR 2,250 (reduced from PKR 3,000)"
+
+Refund incentive variants:
+  - "Top 3 students of every cohort receive a full refund."
+  - "the three highest-ranked students per cohort receive full refunds"
+  - "those ranking highest receive 100% reimbursement"
+
+Instructor description variants:
+  - "Abdul Rahman Azam, identified as a FAST NUCES alumnus and
+    founder/lead instructor"
+  - "Abdul Rahman Azam, a FAST NUCES graduate, created this bootcamp"
+  - "led by instructor Abdul Rahman Azam"
+
+This repetition pattern is itself a useful RAG test signal: a chunking method
+that fragments the document mid-sentence may split these near-duplicate
+phrasings awkwardly, while a retrieval method relying purely on exact keyword
+match (sparse/BM25) versus semantic similarity (dense) may retrieve a
+different subset of these near-duplicate variant sentences for the same
+query — making differences between retrieval techniques visible even on
+simple factual questions like "how much does AI Season cost?"
+
+================================================================================
+SECTION 14: ENROLLMENT PROCESS
+================================================================================
+
+Prospective students interact with AI Season's funnel roughly as follows:
+
+1. Discovery via SEO landing pages (best-ai-courses-in-pakistan, ai-season-
+   vs-piaic, ai-course-fees-in-pakistan, ai-agents-learning-roadmap, or
+   ai-course-in-urdu) or direct visit to the homepage.
+2. Optional: attend the /free-class trial session to evaluate teaching
+   quality before paying.
+3. Review /curriculum and /faq for program details.
+4. Review /abdul-rahman-azam for instructor credibility.
+5. Proceed to /enroll to register for Cohort 01, choosing the early-bird
+   rate (PKR 2,250) if enrolling before the standard-rate cutoff, or the
+   standard rate (PKR 3,000) otherwise.
+6. Seats for Cohort 01 are described as "limited," implying a capped
+   enrollment size, though the specific numeric seat cap is not published on
+   the site.
+7. Once enrolled, the student is scheduled into the 6-week / 18-session live
+   English-language cohort beginning 1 July 2026, with graded tasks (such as
+   this document's own Task 3) assigned across sessions, and eligibility for
+   the top-3 full-refund incentive determined by end-of-cohort performance
+   ranking.
+
+================================================================================
+SECTION 15: SAMPLE TEST QUERIES FOR RAG COMPARISON
+================================================================================
+
+The following queries are useful for exercising a RAG chatbot built on this
+document, since answers are scattered at different densities across
+different sections, making chunking/retrieval differences visible:
+
+- "Who founded AI Season and what university did they attend?"
+  (Answer concentrated in Section 2.1 — tests small precise chunk retrieval.)
+
+- "How much does AI Season cost and is there a discount?"
+  (Answer appears in Sections 1.2, 8, 10, and 13 — tests whether retrieval
+  surfaces the most complete phrasing or a redundant near-duplicate.)
+
+- "What are the five curriculum pillars of AI Season?"
+  (Answer in Section 3.1 and restated in Section 8 — tests list-formatted
+  content retrieval.)
+
+- "How does AI Season compare to PIAIC?"
+  (Answer concentrated in Section 5.1 — tests narrow single-section
+  retrieval.)
+
+- "What incentive exists for top-performing students?"
+  (Answer in Sections 1.3, 8, 10, and 13 — again tests near-duplicate
+  phrasing handling.)
+
+- "What is the difference between LangChain and LangGraph in this course?"
+  (Answer in Sections 3.2 and 11 — tests cross-section synthesis, since
+  Section 3.2 describes the course's framing and Section 11 gives the
+  generic technical definitions.)
+
+- "When does Cohort 01 start and end, and how many sessions are there?"
+  (Answer in Sections 1.1, 8, and 12 — tests numeric/date extraction.)
+
+- "What is chunking and what chunking strategies exist?"
+  (Answer entirely in Section 11 — tests retrieval of a long definitional
+  passage rather than a short factual snippet.)
+
+================================================================================
+SECTION 16: PAGE-BY-PAGE FUNNEL INTENT ANALYSIS
+================================================================================
+
+Each of the 17 indexed pages serves a distinct search-intent role in AI
+Season's acquisition funnel. This section documents that role individually,
+per page, to give a chunking/retrieval system many small, distinct
+information units mapped 1:1 to a single URL each.
+
+16.1 Homepage (/)
+Search intent served: brand/navigational ("aiseason.tech", "AI Season
+bootcamp"). Role: top-of-funnel brand anchor and hub linking to every other
+page. Highest sitemap priority (1.00), signaling it is the canonical entry
+point search engines should treat as most important.
+
+16.2 /enroll
+Search intent served: transactional ("AI Season enrollment", "sign up AI
+Season"). Role: the conversion endpoint of the entire funnel; every other
+page eventually links here. Contains the actual registration mechanism for
+Cohort 01.
+
+16.3 /what-is-ai-season
+Search intent served: informational ("what is AI Season"). Role: a
+plain-language explainer aimed at first-time visitors who arrived via search
+but don't yet know what the brand is, distinct from the homepage's
+brand-anchor role.
+
+16.4 /curriculum
+Search intent served: informational/comparison ("AI Season curriculum",
+"what will I learn"). Role: lets a prospective student self-assess fit
+against the five pillars before paying.
+
+16.5 /faq
+Search intent served: informational/objection-handling ("AI Season cost",
+"is AI Season online"). Role: pre-empts the most common purchase-blocking
+questions (price, format, refund policy, instructor identity) in one place.
+
+16.6 /abdul-rahman-azam
+Search intent served: navigational/credibility ("who teaches AI Season",
+"Abdul Rahman Azam"). Role: personal-brand trust page; substitutes for a
+full "About Us"/team page since AI Season is single-founder-led.
+
+16.7 /langchain-vs-langgraph
+Search intent served: informational, framework-comparison-shopping
+("LangChain vs LangGraph"). Role: captures developers researching the two
+frameworks generically, independent of bootcamp intent, then introduces AI
+Season as the place to learn both properly.
+
+16.8 /rag-ai-agents
+Search intent served: informational ("RAG AI agents", "retrieval augmented
+generation agents"). Role: captures searchers researching RAG specifically,
+positioning AI Season as where RAG-for-agents is taught in depth — directly
+relevant to this document's own use case (Task 3).
+
+16.9 /ai-agents-learning-roadmap
+Search intent served: informational, self-study-planning ("AI agents
+learning roadmap", "how to learn AI agents"). Role: captures self-directed
+learners weighing self-study versus a guided program, then positions AI
+Season as the guided shortcut.
+
+16.10 /ai-course-in-urdu
+Search intent served: informational/localization ("AI course in Urdu", "AI
+seekhein Urdu mein"). Role: captures Urdu-first searchers who might otherwise
+assume no accessible-language AI course exists for them in Pakistan.
+
+16.11 /best-ai-courses-in-pakistan
+Search intent served: comparison-shopping ("best AI courses in Pakistan
+2026"). Role: broad competitive-landscape capture page; positions AI Season
+as a top contender among all Pakistani AI-education options, not just versus
+one named competitor.
+
+16.12 /ai-course-fees-in-pakistan
+Search intent served: price-comparison-shopping ("AI course fees Pakistan",
+"AI course price PKR"). Role: captures price-sensitive searchers and
+reassures them AI Season sits at the extreme-affordable end of the PKR
+0-200,000 national price spectrum.
+
+16.13 /ai-season-vs-piaic
+Search intent served: named-competitor comparison-shopping ("AI Season vs
+PIAIC"). Role: captures searchers already evaluating PIAIC specifically and
+intercepts them with a direct alternative pitch.
+
+16.14 /what-is-agentic-ai
+Search intent served: informational, conceptual ("what is agentic AI").
+Role: captures broad top-of-funnel searchers unfamiliar even with the term
+"agentic AI," then funnels them toward AI Season as the place to learn it
+practically rather than just conceptually.
+
+16.15 /mcp-course
+Search intent served: informational/product-specific ("MCP course", "Model
+Context Protocol course"). Role: captures searchers specifically interested
+in MCP (a newer, narrower topic than "AI agents" broadly), positioning AI
+Season as covering this cutting-edge protocol as part of its curriculum.
+
+16.16 /free-class
+Search intent served: transactional-low-commitment ("free AI class", "free
+trial AI bootcamp"). Role: lead-generation/trial mechanism; converts
+fence-sitters who are unwilling to pay PKR 2,250 upfront without first
+sampling the teaching quality.
+
+16.17 /hackathon
+Search intent served: navigational/event-specific ("AI Season hackathon").
+Role: flagship capstone/proof-of-work event page; second-highest sitemap
+priority after the homepage, indicating strategic importance for social
+proof and shareable outcomes.
+
+================================================================================
+SECTION 17: GRADING PHILOSOPHY CONTEXT (FOR TASK-BASED ASSESSMENT)
+================================================================================
+
+AI Season's task-based assessments (of which this document's own source task,
+Task 3, is one instance) follow a consistent rubric shape across the
+curriculum, based on five recurring evaluation axes:
+
+1. Correctness — does the submitted code actually run and produce the
+   expected results for the stated task?
+2. Requirements coverage — is every explicitly stated requirement in the
+   task description implemented, not just the "interesting" parts?
+3. Code quality — is the code readable, sensibly named, and free of dead
+   code or leftover scaffolding?
+4. Demonstrated output — do saved outputs or printed results prove the
+   program actually works end-to-end, rather than merely compiling?
+5. Documentation — are there helpful comments or markdown explaining the
+   approach taken, especially for non-obvious design decisions (such as why
+   a particular chunking or retrieval method was chosen)?
+
+Grading notes typically instruct evaluators to verify that required features
+are present and functioning, without being overly strict about internal
+implementation details or individual function-level style choices — i.e.,
+the grading philosophy favors "does it work and satisfy the requirements"
+over "is this the one canonical way to implement it."
+
+================================================================================
+SECTION 18: WHY THIS SPECIFIC TASK (TASK 3) EXISTS IN THE CURRICULUM
+================================================================================
+
+Task 3 sits at Week 1, Session 3 — deliberately early in the 6-week program,
+immediately after only two sessions of foundational agent concepts. This
+placement (per the illustrative structure in Section 12) means students are
+asked to build a working RAG comparison chatbot before the dedicated
+"RAG systems in depth" week (Week 4) even begins. This is intentional: it
+front-loads hands-on retrieval experience so that when students reach the
+deeper RAG content in Week 4 (advanced chunking, hybrid retrieval,
+re-ranking, retrieval-quality evaluation), they already have working
+intuition for how chunking and retrieval choices change chatbot behavior in
+practice, rather than encountering RAG for the first time as pure theory.
+
+This document itself — the AI Season Bootcamp knowledge base — is used as
+the required knowledge source for that same Task 3, per the task's own
+description: "Use the provided AI Season Bootcamp documents as the knowledge
+base." That is precisely the document being read right now.
+
+================================================================================
+SECTION 19: PRODUCTION DEPLOYMENT PRACTICES REFERENCED BY THE CURRICULUM
+================================================================================
+
+Pillar 5 of the curriculum ("shipping AI agents to production") implies
+coverage of practical deployment concerns beyond notebook-level prototyping.
+Based on the founder's own documented project focus (AI Agents, MCP Servers,
+agentic automation pipelines) and the curriculum's stated emphasis on
+"production-grade" education, the following deployment-adjacent topics are
+consistent with what the pillar covers:
+
+- Packaging an agent (or RAG pipeline) as a deployable service (e.g., an API
+  server) rather than a local script.
+- Persisting vector stores/embeddings outside of local disk/memory so agent
+  state survives restarts and scales beyond a single process — the same
+  general principle behind moving from local-disk storage to a shared
+  database backend for reliability.
+- Logging and tracing tool calls and retrieval steps in production (tying
+  back to Pillar 4, agent evaluation and observability) so failures can be
+  diagnosed after deployment, not just during development.
+- Handling secrets (API keys, database credentials) safely rather than
+  hardcoding or committing them to version control.
+- Designing for graceful degradation — e.g., a RAG chatbot should behave
+  sensibly if a chunking/retrieval combination returns no relevant results,
+  rather than silently failing.
+- Rate limiting, cost management, and monitoring around live LLM API usage
+  once an agent is exposed to real users instead of just a developer.
+
+--------------------------------------------------------------------------------
+19.1 Why This Matters for RAG Chatbot Tasks Specifically
+--------------------------------------------------------------------------------
+
+A RAG chatbot that is only demonstrated to work once, in a single notebook
+cell, does not satisfy the "production-grade" framing AI Season uses
+throughout its marketing and curriculum. Students are expected to structure
+their RAG comparison chatbot (Task 3) so that:
+
+- The knowledge base (this document) is loaded and chunked in a reusable,
+  re-runnable way, not hardcoded inline per query.
+- Each of the three chunking methods and two retrieval techniques is
+  implemented as a distinct, clearly separated code path, so that swapping
+  one method for another does not require rewriting unrelated logic.
+- The six chunking-retrieval combination outputs are displayed together for
+  a single input query, clearly labeled, so a grader (human or automated) can
+  visually compare answer quality across methods without re-running the
+  program six separate times.
+
+================================================================================
+SECTION 20: DOCUMENT PROVENANCE AND SCOPE STATEMENT
+================================================================================
+
+This document was assembled from the live content of aiseason.tech as
+observed in July 2026, across all 17 pages listed in Section 6, supplemented
+by publicly available secondary profile information about the founder
+(LinkedIn, GitHub) as described in Section 2.1, and by internally consistent
+inference (clearly labeled as such — see Sections 12, 16, and 19) where the
+public site does not itemize information explicitly.
+
+Sections presenting direct, quoted, or paraphrased site content: 1, 2, 3, 4,
+5, 6, 7 (task description quoted from the assignment itself), 8, 10, 13.
+
+Sections presenting supplementary educational/reference material not unique
+to AI Season specifically (general RAG/agent terminology): 11.
+
+Sections presenting AI Season's own inferred internal structure, explicitly
+labeled as inferred rather than published fact: 12, 16, 19.
+
+Sections presenting meta-commentary about this document's own use as a RAG
+knowledge base for Task 3: 7, 15, 17, 18, this section (20).
+
+Readers and RAG systems processing this document should treat Sections 12,
+16, and 19 as reasoned inference built on top of confirmed facts (marked
+explicitly within each section), rather than as directly stated site content,
+in the same way any careful retrieval system should distinguish between a
+chunk containing a direct quote and a chunk containing derived commentary.
+
+================================================================================
+APPENDIX A: RAW FACT LIST (ONE FACT PER LINE, FOR RETRIEVAL GRANULARITY TESTS)
+================================================================================
+
+FACT: AI Season's domain is aiseason.tech.
+FACT: AI Season's founder and lead instructor is Abdul Rahman Azam.
+FACT: Abdul Rahman Azam is a FAST NUCES alumnus.
+FACT: Abdul Rahman Azam is affiliated with the ACM AI Chapter, FAST NUCES Karachi.
+FACT: Abdul Rahman Azam's GitHub handle is AbdulRahmanAzam.
+FACT: Abdul Rahman Azam's mentorship journey began in April 2021.
+FACT: AI Season Cohort 01 begins on 1 July 2026.
+FACT: AI Season Cohort 01 ends on 12 August 2026.
+FACT: AI Season runs for 6 weeks.
+FACT: AI Season includes 18 live sessions.
+FACT: AI Season delivers 3 live sessions per week on average.
+FACT: AI Season is taught entirely online.
+FACT: AI Season is taught in English.
+FACT: AI Season has an Urdu-accessibility landing page at /ai-course-in-urdu.
+FACT: AI Season's standard price is PKR 3,000.
+FACT: AI Season's early-bird price is PKR 2,250.
+FACT: AI Season's early-bird discount is 25% off standard price.
+FACT: AI Season charges the same price to Pakistani and international students.
+FACT: The top 3 students of every AI Season cohort receive a full refund.
+FACT: AI Season's curriculum has five pillars.
+FACT: Pillar 1 of the curriculum is AI Agents fundamentals — planning, tool use, memory.
+FACT: Pillar 2 of the curriculum is LangChain and LangGraph.
+FACT: Pillar 3 of the curriculum is Retrieval-Augmented Generation (RAG).
+FACT: Pillar 4 of the curriculum is agent evaluation and observability.
+FACT: Pillar 5 of the curriculum is shipping AI agents to production.
+FACT: AI Season has a dedicated comparison page against PIAIC.
+FACT: PIAIC stands for Presidential Initiative for Artificial Intelligence and Computing.
+FACT: AI Season has a dedicated MCP (Model Context Protocol) course page.
+FACT: AI Season has a hackathon documented at /hackathon.
+FACT: The hackathon page has the second-highest sitemap priority after the homepage.
+FACT: AI Season has 17 total indexed pages per sitemap.xml.
+FACT: AI Season offers a free trial session via /free-class.
+FACT: AI Season's core mission statement is to make production-grade AI Agents education affordable globally with Pakistan-focused early-bird pricing.
+FACT: AI Season is described as beginner-friendly.
+FACT: AI Season does not list any co-instructors or teaching assistants publicly.
+FACT: Task 3 of the AI Season curriculum is "Build and Compare a RAG Chatbot."
+FACT: Task 3 is assigned in Week 1, Session 3.
+FACT: Task 3 requires three chunking methods and two retrieval techniques.
+FACT: Task 3 requires all six chunking-retrieval combinations to be shown for one query simultaneously.
+FACT: AI Season's price range positioning in Pakistan spans PKR 0 to PKR 200,000 nationally, with AI Season near the low end.
+FACT: AI Season has no major third-party press coverage indexed as of July 2026.
+FACT: AI Season's marketing relies on owned-channel SEO landing pages rather than earned media.
+FACT: AI Season's grading rubrics evaluate correctness, requirements coverage, code quality, demonstrated output, and documentation.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

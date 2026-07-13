@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG Lab — Chunking & Retrieval Benchmark</title>
+  <script src="https://cdn.tailwindcss@3.4.1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              950: '#020617',
+              900: '#0f172a',
+              850: '#111827',
+              800: '#1e293b',
+              750: '#263248',
+              700: '#334155',
+              600: '#475569',
+              500: '#64748b',
+              400: '#94a3b8',
+              300: '#cbd5e1',
+            },
+            emerald: { 500: '#10b981', 400: '#34d399', 300: '#6ee7b7' },
+            amber: { 500: '#f59e0b', 400: '#fbbf24', 300: '#fcd34d' },
+            rose: { 500: '#f43f5e', 400: '#fb7185', 300: '#fda4af' },
+            cyan: { 500: '#06b6d4', 400: '#22d3ee', 300: '#67e8f9' },
+            violet: { 500: '#8b5cf6', 400: '#a78bfa', 300: '#d8b4fe' },
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            'card-enter': 'card-enter 0.4s ease-out forwards',
+            'shimmer': 'shimmer 2s linear infinite',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+              '50%': { opacity: '0.5', transform: 'scale(1.02)' },
+            },
+            'card-enter': {
+              '0%': { opacity: '0', transform: 'translateY(20px) scale(0.98)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            },
+            'shimmer': {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @layer base {
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        background: #030712;
+        color: #e2e8f0;
+        min-height: 100vh;
+      }
+      ::selection { background: rgba(16, 185, 129, 0.3); color: #fff; }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #0f172a; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    }
+
+    @layer components {
+      .bg-grid {
+        background-image:
+          linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      .bg-radial {
+        background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.08), transparent),
+                    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139, 92, 246, 0.06), transparent),
+                    radial-gradient(ellipse 50% 30% at 10% 0%, rgba(6, 182, 212, 0.05), transparent);
+      }
+      .card-glow {
+        position: relative;
+        isolation: isolate;
+      }
+      .card-glow::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 14px;
+        padding: 2px;
+        background: var(--glow-color, transparent);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease, filter 0.4s ease;
+        filter: blur(8px);
+        z-index: -1;
+        pointer-events: none;
+      }
+      .card-glow:hover::before {
+        opacity: 1;
+        filter: blur(16px);
+      }
+      .card-glow[data-glow="low"] { --glow-color: linear-gradient(135deg, #10b981, #06b6d4); }
+      .card-glow[data-glow="medium"] { --glow-color: linear-gradient(135deg, #f59e0b, #f43f5e); }
+      .card-glow[data-glow="high"] { --glow-color: linear-gradient(135deg, #f43f5e, #8b5cf6); }
+
+      .input-modern {
+        @apply w-full bg-slate-850/50 border border-slate-700/50 rounded-xl px-4 py-3
+               text-slate-100 placeholder-slate-500/60 font-mono text-sm
+               transition-all duration-300
+               focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30
+               focus:bg-slate-850/80
+               hover:border-slate-600/50;
+        background-image: linear-gradient(180deg, rgba(16,185,129,0.02) 0%, transparent 100%);
+      }
+      .input-modern:focus + .input-label,
+      .input-modern:not(:placeholder-shown) + .input-label {
+        @apply text-emerald-400 transform -translate-y-6 scale-75 origin-left;
+      }
+      .input-wrapper { @apply relative; }
+      .input-label {
+        @apply absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm font-medium
+               pointer-events-none transition-all duration-200 origin-left;
+      }
+      .slider-modern {
+        @apply w-full h-1.5 bg-slate-800 rounded-full appearance-none cursor-pointer
+               focus:outline-none focus:ring-2 focus:ring-emerald-500/30;
+        background-image: linear-gradient(90deg, #10b981, #06b6d4);
+      }
+      .slider-modern::-webkit-slider-thumb {
+        @apply appearance-none w-4 h-4 bg-white rounded-full shadow-lg
+               transition-all duration-200
+               hover:scale-110 hover:shadow-emerald-500/30
+               active:scale-125;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      }
+      .slider-modern::-moz-range-thumb {
+        @apply w-4 h-4 bg-white rounded-full border-0 shadow-lg
+               transition-all duration-200
+               hover:scale-110 hover:shadow-emerald-500/30;
+      }
+      .checkbox-modern {
+        @apply w-4 h-4 rounded border-slate-700 bg-slate-800/50
+               text-emerald-500
+               focus:ring-2 focus:ring-emerald-500/30 focus:ring-offset-2 focus:ring-offset-slate-900
+               transition-all duration-200
+               hover:border-emerald-500/50
+               appearance-none cursor-pointer
+               relative;
+        border-width: 1.5px;
+      }
+      .checkbox-modern:checked {
+        @apply bg-emerald-500 border-emerald-500;
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        background-size: 100% 100%;
+      }
+      .badge-chip {
+        @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold
+               border border-white/10 backdrop-blur-sm;
+      }
+      .badge-chunk { @apply badge-chip bg-emerald-500/15 text-emerald-400 border-emerald-500/20; }
+      .badge-retrieval { @apply badge-chip bg-violet-500/15 text-violet-400 border-violet-500/20; }
+      .badge-param { @apply badge-chip bg-slate-800/50 text-slate-300 border-slate-700/50; }
+      .btn-primary {
+        @apply relative overflow-hidden px-6 py-3 rounded-xl font-semibold text-sm
+               bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-950
+               shadow-lg shadow-emerald-500/25
+               transition-all duration-300
+               hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-[1.02]
+               active:scale-[0.98] active:shadow-lg
+               focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2 focus:ring-offset-slate-950;
+      }
+      .btn-secondary {
+        @apply relative px-6 py-3 rounded-xl font-semibold text-sm
+               bg-slate-800/50 text-slate-100 border border-slate-700/50
+               backdrop-blur-sm
+               transition-all duration-300
+               hover:bg-slate-800/80 hover:border-slate-600/50 hover:scale-[1.02]
+               active:scale-[0.98]
+               focus:outline-none focus:ring-2 focus:ring-slate-600/50 focus:ring-offset-2 focus:ring-offset-slate-950;
+      }
+      .btn-ghost {
+        @apply px-4 py-2 rounded-lg font-medium text-sm text-slate-400
+               hover:text-slate-100 hover:bg-slate-800/50
+               transition-all duration-200;
+      }
+      .token-pill {
+        @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+               bg-slate-800/50 border border-slate-700/50 text-slate-300 text-xs font-mono;
+      }
+      .token-pill .label { @apply text-slate-500; }
+      .token-pill .value { @apply text-slate-100 font-medium tabular-nums; }
+      .token-pill.low .value { @apply text-emerald-400; }
+      .token-pill.medium .value { @apply text-amber-400; }
+      .token-pill.high .value { @apply text-rose-400; }
+
+      .modal-backdrop {
+        @apply fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50
+               transition-opacity duration-300;
+      }
+      .modal-content {
+        @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl max-h-[85vh]
+               bg-slate-900/95 border border-slate-700/50 rounded-2xl shadow-2xl
+               backdrop-blur-xl z-50 overflow-hidden
+               animate-card-enter;
+      }
+      .section-title {
+        @apply text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4;
+      }
+      .stat-value { @apply text-3xl font-bold font-mono tabular-nums; }
+      .stat-label { @apply text-xs text-slate-500 uppercase tracking-wider; }
+    }
+
+    @layer utilities {
+      .text-balance { text-wrap: balance; }
+      .animation-delay-100 { animation-delay: 100ms; }
+      .animation-delay-200 { animation-delay: 200ms; }
+      .animation-delay-300 { animation-delay: 300ms; }
+      .animation-delay-400 { animation-delay: 400ms; }
+      .animation-delay-500 { animation-delay: 500ms; }
+    }
+  </style>
+</head>
+<body class="bg-[#030712]">
+  <div class="p-6 md:p-12 max-w-7xl mx-auto space-y-8 bg-grid bg-radial min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-40 rounded-xl -mx-6 md:-mx-12 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/25">
+              <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.940a1 1 0 00-1.474 0l-7.5 12.5a1 1 0 00.36 1.568h13.786a1 1 0 00.964-1.016l-2.5-7.5a1 1 0 00-.707-.964H9.594z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l3 7 3-7" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 17l-3 3 3-3" />
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold text-slate-50 tracking-tight">RAG Lab</h1>
+              <p class="text-xs text-slate-500">Chunking & Retrieval Benchmark</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div id="healthStatus" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700/50">
+              <span id="healthDot" class="w-2 h-2 rounded-full bg-slate-500 transition-colors"></span>
+              <span id="healthText" class="text-xs font-medium text-slate-400">Checking...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="space-y-8">
+      <!-- Benchmark Controls Grid: Chunking & Retrieval -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="benchmarkControls">
+        <!-- Chunking Methods Card -->
+        <section class="card-glow bg-slate-900/50 border border-slate-800 rounded-xl p-6 space-y-4 backdrop-blur-sm" data-glow="low">
+          <h2 class="section-title flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Chunking Methods
+          </h2>
+          <div class="space-y-3" id="chunkingMethods">
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" id="chunkCharacter" value="character" checked class="checkbox-modern w-4 h-4">
+              <span class="text-sm font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">Character</span>
+              <span class="ml-auto text-xs text-slate-500 font-mono">CS</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" id="chunkRecursive" value="recursive" checked class="checkbox-modern w-4 h-4">
+              <span class="text-sm font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">Recursive</span>
+              <span class="ml-auto text-xs text-slate-500 font-mono">RS</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" id="chunkToken" value="token" checked class="checkbox-modern w-4 h-4">
+              <span class="text-sm font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">Token</span>
+              <span class="ml-auto text-xs text-slate-500 font-mono">TS</span>
+            </label>
+          </div>
+          <div class="mt-2 space-y-4 pt-4 border-t border-slate-800/50">
+            <div>
+              <div class="flex justify-between text-xs mb-1.5">
+                <span class="text-slate-400">Chunk Size</span>
+                <span id="valChunkSize" class="font-mono text-emerald-400">500</span>
+              </div>
+              <input type="range" id="chunkSize" min="100" max="2000" step="50" value="500" class="slider-modern">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1.5">
+                <span class="text-slate-400">Chunk Overlap</span>
+                <span id="valChunkOverlap" class="font-mono text-emerald-400">50</span>
+              </div>
+              <input type="range" id="chunkOverlap" min="0" max="500" step="10" value="50" class="slider-modern">
+            </div>
+          </div>
+        </section>
+
+        <!-- Retrieval Methods Card -->
+        <section class="card-glow bg-slate-900/50 border border-slate-800 rounded-xl p-6 space-y-4 backdrop-blur-sm" data-glow="low">
+          <h2 class="section-title flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+            Retrieval Methods
+          </h2>
+          <div class="space-y-3" id="retrievalMethods">
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" id="retrieveSimilarity" value="similarity" checked class="checkbox-modern w-4 h-4">
+              <span class="text-sm font-medium text-slate-200 group-hover:text-violet-400 transition-colors">Similarity</span>
+              <span class="ml-auto text-xs text-slate-500 font-mono">k-NN</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" id="retrieveScore" value="score_threshold" checked class="checkbox-modern w-4 h-4">
+              <span class="text-sm font-medium text-slate-200 group-hover:text-violet-400 transition-colors">Score Threshold</span>
+              <span class="ml-auto text-xs text-slate-500 font-mono">σ</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" id="retrieveMmr" value="mmr" checked class="checkbox-modern w-4 h-4">
+              <span class="text-sm font-medium text-slate-200 group-hover:text-violet-400 transition-colors">MMR</span>
+              <span class="ml-auto text-xs text-slate-500 font-mono">λ</span>
+            </label>
+          </div>
+          <div class="mt-2 space-y-4 pt-4 border-t border-slate-800/50">
+            <div>
+              <div class="flex justify-between text-xs mb-1.5">
+                <span class="text-slate-400">k (results)</span>
+                <span id="valK" class="font-mono text-violet-400">3</span>
+              </div>
+              <input type="range" id="k" min="1" max="20" value="3" class="slider-modern">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1.5">
+                <span class="text-slate-400">fetch_k (MMR)</span>
+                <span id="valFetchK" class="font-mono text-violet-400">5</span>
+              </div>
+              <input type="range" id="fetchK" min="1" max="50" value="5" class="slider-modern">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1.5">
+                <span class="text-slate-400">λ (MMR diversity)</span>
+                <span id="valLambda" class="font-mono text-violet-400">0.5</span>
+              </div>
+              <input type="range" id="lambda" min="0" max="1" step="0.1" value="0.5" class="slider-modern">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1.5">
+                <span class="text-slate-400">Score Threshold</span>
+                <span id="valScoreThreshold" class="font-mono text-violet-400">0.30</span>
+              </div>
+              <input type="range" id="scoreThreshold" min="0" max="1" step="0.05" value="0.3" class="slider-modern">
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Query, Actions & Results Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+        <!-- Sidebar: Query, Actions, Stats -->
+        <aside class="lg:sticky lg:top-24 space-y-6" id="sidebar">
+          <!-- Query Panel -->
+          <section class="card-glow bg-slate-900/50 border border-slate-800/50 rounded-xl p-6 backdrop-blur-sm" data-glow="low">
+            <h2 class="section-title">Query</h2>
+            <div class="input-wrapper">
+              <textarea
+                id="query"
+                rows="3"
+                placeholder="Enter your question about AI Season..."
+                class="input-modern resize-none"
+              ></textarea>
+              <label class="input-label" for="query">Your Question</label>
+            </div>
+            <div class="mt-3 flex items-center gap-2 text-xs text-slate-500">
+              <kbd class="px-2 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono">⌘</kbd>
+              <kbd class="px-2 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono">Enter</kbd>
+              <span>to run query</span>
+            </div>
+          </section>
+
+          <!-- Actions Panel -->
+          <section class="card-glow bg-slate-900/50 border border-slate-800/50 rounded-xl p-6 backdrop-blur-sm" data-glow="low">
+            <div class="flex flex-col gap-3">
+              <button id="btnIngest" class="btn-secondary flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+                Re-ingest Data
+              </button>
+              <button id="btnQuery" class="btn-primary flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>Run Query</span>
+              </button>
+            </div>
+            <div id="status" class="mt-4 hidden"></div>
+          </section>
+
+          <!-- Stats Summary -->
+          <section class="card-glow bg-slate-900/50 border border-slate-800/50 rounded-xl p-6 backdrop-blur-sm hidden" id="statsPanel" data-glow="low">
+            <h2 class="section-title">Session Stats</h2>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="text-center p-3 bg-slate-800/50 rounded-xl">
+                <div id="statQueries" class="stat-value text-cyan-400">0</div>
+                <div class="stat-label">Queries</div>
+              </div>
+              <div class="text-center p-3 bg-slate-800/50 rounded-xl">
+                <div id="statCombos" class="stat-value text-violet-400">0</div>
+                <div class="stat-label">Combos</div>
+              </div>
+              <div class="text-center p-3 bg-slate-800/50 rounded-xl">
+                <div id="statTokens" class="stat-value text-emerald-400">0</div>
+                <div class="stat-label">Tokens</div>
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <!-- Results Area -->
+        <section class="space-y-6">
+          <!-- Results Header -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-8 mb-6">
+            <div>
+              <h2 class="text-2xl font-bold text-slate-50 tracking-tight">Results</h2>
+              <p class="text-sm text-slate-500 mt-0.5">Bento grid — hover cards for glow, click to expand</p>
+            </div>
+            <div class="flex items-center gap-3" id="resultsHeaderActions">
+              <span id="resultCount" class="hidden px-3 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-sm font-semibold border border-emerald-500/20">
+                0 combinations
+              </span>
+              <button id="btnClear" class="btn-ghost hidden">Clear</button>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="card-glow bg-slate-900/50 border border-slate-800/50 rounded-xl p-12 text-center backdrop-blur-sm" data-glow="low">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 flex items-center justify-center">
+              <svg class="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.940a1 1 0 00-1.474 0l-7.5 12.5a1 1 0 00.36 1.568h13.786a1 1 0 00.964-1.016l-2.5-7.5a1 1 0 00-.707-.964H9.594z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l3 7 3-7" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 17l-3 3 3-3" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-300 mb-1">No results yet</h3>
+            <p class="text-slate-500 text-sm">Enter a query and hit <kbd class="px-2 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-xs ml-1 mr-1">Run Query</kbd> to see the benchmark</p>
+          </div>
+
+          <!-- Results Grid (Bento Style) -->
+          <div id="resultsGrid" class="hidden grid grid-cols-1 gap-6" role="list"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/50 bg-slate-950/80 backdrop-blur-xl rounded-t-xl -mx-6 md:-mx-12 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto py-4">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500">
+          <span>RAG Lab — Built for AI Season Bootcamp</span>
+          <div class="flex items-center gap-4">
+            <a href="#" class="hover:text-emerald-400 transition-colors" aria-label="GitHub">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="hover:text-emerald-400 transition-colors" aria-label="Documentation">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <div class="flex items-center justify-between p-5 border-b border-slate-700/50">
+        <h3 id="modalTitle" class="text-lg font-semibold text-slate-50"></h3>
+        <button id="modalClose" class="btn-ghost p-2 rounded-lg hover:bg-slate-800" aria-label="Close modal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="modalBody" class="p-5 max-h-[60vh] overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

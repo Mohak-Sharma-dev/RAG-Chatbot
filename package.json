@@ -1,0 +1,31 @@
+{
+  "name": "chatbot-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite serve",
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohak-Sharma-dev/RAG-Chatbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mohak-Sharma-dev/RAG-Chatbot/issues"
+  },
+  "homepage": "https://github.com/Mohak-Sharma-dev/RAG-Chatbot#readme",
+  "dependencies": {
+    "vite": "^8.1.4"
+  }
+}
